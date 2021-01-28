@@ -3,6 +3,6 @@ let income = 1000;
 let addExpenses = 50;
 let deposit = 10;
 let misson = 1000;
-let period = 12;
+let period = 24;
 alert("Hello world!");
 console.log("Hello world!");
