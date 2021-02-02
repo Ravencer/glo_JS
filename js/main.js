@@ -7,14 +7,14 @@ let deposit = true;
 let mission = 55600;
 let period = 12;
 
-console.log(typeof money, typeof income, typeof deposit);
-console.log(addExpenses.length);
-console.log("Период равен " + period + " месяцев");
-console.log("Цель заработать " + mission + " рублей/долларов/гривен/юани");
+function showTypeOf(data){
+  console.log(typeof(data));
+}
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
 addExpenses = addExpenses.toLowerCase();
 console.log(addExpenses.split(","));
-let budgetDay = money / 30;
-console.log(budgetDay);
 
 
 money = prompt('Ваш месячный доход?');
@@ -26,27 +26,20 @@ let expenses1 = prompt('Введите обязательную статью р�
 let amount1 = prompt('Во сколько это обойдется?');
 let expenses2 = prompt('Введите обязательную статью расходов?');
 let amount2 = prompt('Во сколько это обойдется?');
-let budgetMonth = money - (Number(amount1) + Number(amount2));
-console.log('Бюджет на месяц: ' + budgetMonth);
-let missionComplete = 0;
-let monthsComplete = 0;
-while(missionComplete <= mission){
-  missionComplete += budgetMonth;
-  monthsComplete += 1;
-}
-console.log('Цель будет достигнута через ' + monthsComplete + ' месяцев');
-budgetDay = Math.floor(money / 30);
 
-  if (budgetDay >= 1200){
-    console.log('У вас высокий уровень дохода');
-  }
-  else if (budgetDay >= 600 && budgetDay < 1200){
-    console.log('У вас средний уровень дохода');
-  }
-  else if (budgetDay > 0 && budgetDay < 600){
-    console.log('К сожалению, у вас уровень дохода ниже среднего');
-  }
-  else if (budgetDay <= 0){
-     console.log('Что-то пошло не так');
-  }
-    
+function getExpensesMonth(price1, price2){
+  return Number(price1) + Number(price2);
+}
+console.log("Расходы в месяц: " + getExpensesMonth(amount1, amount2));
+function getAccumulatedMonth(money){
+  let expenses = getExpensesMonth(amount1, amount2);
+  return money - expenses;
+}
+let accumulatedMonth = getAccumulatedMonth(money);
+console.log("Месячный доход: " + accumulatedMonth);
+function getTargetMonth(accumulated, mission){
+  return Math.ceil(mission / accumulated);
+}
+console.log("Цель будет достигнута через " + getTargetMonth(accumulatedMonth, mission) + " месяцев");
+let budgetDay = Math.floor(accumulatedMonth / 30);
+console.log("Бюджет на день: " + budgetDay);
