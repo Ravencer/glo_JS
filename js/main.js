@@ -38,8 +38,13 @@ function getAccumulatedMonth(money){
 let accumulatedMonth = getAccumulatedMonth(money);
 console.log("Месячный доход: " + accumulatedMonth);
 function getTargetMonth(accumulated, mission){
-  return Math.ceil(mission / accumulated);
+  if((mission / accumulated) <= 0 || (mission / accumulated) === Infinity){
+    return console.log('Упс, похоже, доход не позволяет вам достигнуть этой цели.');
+  }
+  else{
+    console.log("Цель будет достигнута через " + (mission / accumulated) + " месяцев");
+  }
 }
-console.log("Цель будет достигнута через " + getTargetMonth(accumulatedMonth, mission) + " месяцев");
+getTargetMonth(accumulatedMonth, mission);
 let budgetDay = Math.floor(accumulatedMonth / 30);
 console.log("Бюджет на день: " + budgetDay);
