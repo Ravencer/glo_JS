@@ -1,6 +1,5 @@
 'use strict';
 
-
 let money;
 
 let isNumber = function(n){
@@ -98,7 +97,7 @@ let appData = {
       console.log('К сожалению, у вас уровень дохода ниже среднего');
     }
     else if (appData.budgetDay <= 0){
-       console.log('Что-то пошло не так');
+       console.log('Что-то пошло не так!');
     }
   }, 
   getInfoDeposit: function(){
