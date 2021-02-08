@@ -46,7 +46,7 @@ let appData = {
     appData.accumulatedMonth = appData.budget - sum;
   },
   getBudget: function(){
-    appData.budgetDay = (appData.budget - appData.expensesMonth) / 30;
+    appData.budgetDay = Math.round((appData.budget - appData.expensesMonth) / 30);
     appData.budgetMonth = (appData.budget - appData.expensesMonth);
   },
   getTargetMonth: function(){
@@ -79,8 +79,7 @@ appData.getTargetMonth();
 
 console.log("Расходы в месяц: " + appData.expensesMonth);
 console.log("Месячный доход: " + appData.accumulatedMonth);
-appData.getStatusIncome();
-console.log('Наша программа включает в себя данные: ')
+console.log('Наша программа включает в себя данные: ');
 for(let key in appData){
   console.log(key + ': ' + appData[key]);
 }
