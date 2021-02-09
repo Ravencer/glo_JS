@@ -6,7 +6,12 @@ let isNumber = function(n){
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 let isStr = function(str){
-  return /^[\d\-\/]*$/.test(str);
+  if(str === null){
+    return false;
+  }
+  else{
+    return /^[\d\-\/]*$/.test(str) || str.trim() === '';
+  }
 };
 
 let start = function(){
@@ -44,12 +49,16 @@ let appData = {
       do{
         cashIncome = prompt('Сколько в месяц зарабатываете на этом?');
       }
-      while(!isNumber(cashIncome));
-      cashIncome *= 1;
-      appData.income[itemIncome] = cashIncome;
+      while(!isNumber(cashIncome) && cashIncome !== null);
+      if(isNumber(cashIncome) && cashIncome !== null){
+        cashIncome *= 1;
+        appData.income[itemIncome] = cashIncome;
+      }
     }
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-      appData.addExpenses = addExpenses.toLowerCase().split(",");
+      if(addExpenses !== null){
+         appData.addExpenses = addExpenses.toLowerCase().split(",");
+      }
       appData.deposit = confirm('Есть ли у вас депозит в банке?');
       for(let i = 0; i < 2; i++){
         let itemExpenses;
@@ -126,7 +135,7 @@ appData.asking();
 appData.getExpensesMonth();
 appData.getBudget();
 appData.getTargetMonth();
-
+appData.getInfoDeposit();
 console.log("Расходы в месяц: " + appData.expensesMonth);
 console.log("Месячный доход: " + appData.accumulatedMonth);
 console.log('Наша программа включает в себя данные: ');
@@ -136,7 +145,13 @@ for(let key in appData){
 let str;
 let strComplete = '';
 for(let i = 0; i < appData.addExpenses.length; i++){
-  str = appData.addExpenses[i].trim();
-  strComplete = strComplete + str.charAt(0).toUpperCase() + str.slice(1) + ', ';
+  if(i+1 !== appData.addExpenses.length ){
+    str = appData.addExpenses[i].trim();
+    strComplete = strComplete + str.charAt(0).toUpperCase() + str.slice(1) + ', ';
+  }
+  else{
+    str = appData.addExpenses[i].trim();
+    strComplete = strComplete + str.charAt(0).toUpperCase() + str.slice(1);
+  }
 }
 console.log(strComplete);
