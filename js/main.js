@@ -20,7 +20,7 @@ let start = function(){
   }
   while(!isNumber(money));
 };
-start();
+//start();
 money *= 1;
 
 let appData = {
@@ -131,7 +131,7 @@ let appData = {
     return appData.budgetMonth * appData.period;
   }
 };
-appData.asking();
+/*appData.asking();
 appData.getExpensesMonth();
 appData.getBudget();
 appData.getTargetMonth();
@@ -154,4 +154,28 @@ for(let i = 0; i < appData.addExpenses.length; i++){
     strComplete = strComplete + str.charAt(0).toUpperCase() + str.slice(1);
   }
 }
-console.log(strComplete);
+console.log(strComplete);*/
+
+let buttonCount = document.getElementById('start');
+let incomePlus = document.getElementsByTagName('button')[0];
+let expensesPlus = document.getElementsByTagName('button')[1];
+let depositCheck = document.querySelector('#deposit-check');
+let additionalInput = document.querySelectorAll('.additional_income-item');
+let budgetDayVal = document.getElementsByClassName('budget_day-value');
+let expensesMonthVal = document.getElementsByClassName('expenses_month-value');
+let additionalIncomeVal = document.getElementsByClassName('additional_income-value');
+let additionalExpensesVal = document.getElementsByClassName('additional_expenses-value');
+let incomePerVal = document.getElementsByClassName('income_period-value');
+let targetMontVal = document.getElementsByClassName('target_month-value');
+let salaryInput = document.querySelector('.salary-amount');
+let incomeTitle = document.querySelector('.income-title');
+let incomeAmount = document.querySelector('.income-amount');
+let addIncomeFirst = document.querySelectorAll('.additional_income-item')[0];
+let addIncomeSecnd = document.querySelectorAll('.additional_income-item')[1];
+let expensesTitle = document.querySelector('.expenses-title');
+let expensesAmount = document.querySelector('.expenses-amount');
+let addExpensesItem = document.querySelector('.additional_expenses-item');
+let depAmount = document.querySelector('.deposit-amount');
+let depPercent = document.querySelector('.deposit-percent');
+let targetAmount = document.querySelector('.target-amount');
+let periodRange = document.querySelector('.period-select');
