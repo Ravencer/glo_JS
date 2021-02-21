@@ -282,7 +282,7 @@ class AppData {
   }
   getInfoDeposit (){
     if(this.deposit){
-      if(!isNumber(depositPercent.value) || Number(depositPercent.value) < 0){
+      if(!isNumber(depositPercent.value) || Number(depositPercent.value) < 0 || Number(depositPercent.value) > 100){
         alert('Введите корректное значение в поле проценты');
         buttonCount.disabled = true;
         depositPercent.addEventListener('change', function(){
